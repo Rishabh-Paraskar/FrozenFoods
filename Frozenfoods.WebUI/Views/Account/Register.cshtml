@@ -1,0 +1,165 @@
+﻿@model FrozenFoods.Core.Models.Customer
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Value = "What is your pet's name?",
+        Text = "What is your pet's name?"
+
+    });
+    listItems.Add(new SelectListItem
+    {
+        Value = "What is the name of the company of your first job?",
+        Text = "What is the name of the company of your first job?"
+
+    });
+    listItems.Add(new SelectListItem
+    {
+        Value = "What was your favorite place to visit as a child?",
+        Text = "What was your favorite place to visit as a child?"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Value = "What is your spouse's mother's maiden name?",
+        Text = "What is your spouse's mother's maiden name?"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Value = "What is the country of your ultimate dream vacation?",
+        Text = "What is the country of your ultimate dream vacation?"
+    });
+}
+
+
+@using (Html.BeginForm("SaveRegisterDetails", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Create a new account.</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<div class="row">
+    <span class="col-md-10 text-danger" style="font-size:medium">@ViewBag.Messages</span>
+    <span class="col-md-10 text-success"  style="font-size:medium">@ViewBag.Message</span>
+</div><br />
+
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+          
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PasswordHash, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.PasswordHash, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.PasswordHash, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @*<div class="form-group">
+            <label class="col-md-2 control-label">Confirm Password</label>
+
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">First Name</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Last Name</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Phone Number</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Date Of Birth</label>
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control datetimepicker1" } })
+            @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+            <span class="text-danger">@ViewBag.Date</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Security Question</label>
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.SecurityQuestion, listItems, "-- Select Status --", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.SecurityQuestion, "", new { @class = "text-danger" })
+            @*@Html.DropDownListFor(model => model.SecurityQuestion, new SelectList(states, "Value", "Text"), new { @class = "form-control" })*@
+
+            @*@Html.DropDownListFor(model => model.SecurityQuestion, new SelectList(ViewBag.statusList), new { @class = "form-control" })*@
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Answer</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Answer, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Answer, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Address</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Zip Code</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.ZipCode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Image</label>
+        <div class="col-md-10">
+            <input type="file" id="file" name="file" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Register" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

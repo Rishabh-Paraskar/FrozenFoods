@@ -1,0 +1,98 @@
+﻿@*@model IEnumerable<MyCafeKoko.Core.ViewModel.BasketItemViewModel>*@
+
+@using FrozenFoods.Core.ViewModel
+@using FrozenFoods.Core.Models;
+@model dynamic
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Cart</h2>
+<script src="~/Scripts/BasketSummary.js"></script>
+@*<link href="~/Content/ModalStyle.css" rel="stylesheet" />*@
+<span class="text-danger">@ViewBag.Message</span>
+<table class="table">
+    <tr>
+        <th>
+
+        </th>
+        <th>
+            Product Name
+        </th>
+        <th>
+            Quantity
+        </th>
+
+        <th>
+            Price
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (BasketItemViewModel item in Model.Teachers)
+    {
+        <tr>
+            <td>
+                @*<input class="img" style="height:50px" id="myBtn" value="@Html.DisplayText(modelItem => item.Id).ToString()" type="image" src="~/Content/ProductImages/@item.Image" />*@
+                <strong>@Html.ActionLink(item.ProductName, "Details", "Home", new { id = item.Id }, new { @class = "", Id = "myBtn" })</strong>
+                @*<a href="@Url.Action(item.ProductName,"Details","Home", new {id=item.Id })" id="myBtn">Delete</a>*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @*<p id="output">0</p>*@
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+
+            <td>
+                <p>&#8377; @Html.DisplayFor(modelItem => item.Price)</p>
+            </td>
+            <td>
+                <a href="@Url.Action("AddToBasket","Basket", new {id=item.Id })">  <img src="~/Content/uploads/plus.png" width="20" height="20" /></a>
+            </td>
+            <td>
+                <a href="@Url.Action("Remove","Basket", new {id=item.Id })"> <img src="~/Content/uploads/remove.png" width="20" height="20"/></a>
+            </td>
+
+
+            @*<td>
+                <input src="~/Content/uploads/plus.png" width="20" height="20" type="image" onclick="Quantity()" id="plus" />
+                <input src="~/Content/uploads/remove.png" width="20" height="20" type="image" onclick="QuantityMinus()" id="minus" />
+            </td>*@
+
+
+            <td>
+                <a href="@Url.Action("removeFromBasket","Basket", new {id=item.Id })" class="btn btn-danger">Remove</a>
+            </td>
+
+
+
+        </tr>
+    }
+
+    <tr>
+        <td colspan="4" style="text-align:right"><strong> Basket Total</strong></td>
+        @* <td>  @string.Format("{0:c}", (from p in Barsket select p.Price * p.Quantity).Sum())</td>*@
+        @*<td><a href="@Url.Action("checkOut","Basket")">Check Out</a></td>*@
+        <td><a href="@Url.Action("checkOut","Basket","plus minus")">Check Out</a></td>
+    </tr>
+</table>
+@*<script src="~/Scripts/ModalScript.js"></script>*@
+<div id="showmodal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            @foreach (Product item in Model.Students)
+            {
+
+                Html.RenderPartial("_showParticalView", item);
+
+            }
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<button id='open' data-toggle="modal" data-target="#showmodal">open modal</button>
+

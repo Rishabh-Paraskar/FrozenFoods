@@ -1,0 +1,93 @@
+﻿@model IEnumerable<FrozenFoods.Core.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List Of Customers</h2>
+
+
+<table class="table">
+    <tr>
+
+       
+        <th>
+            <label class="col-md-2 control-label">First&nbsp;Name</label>
+        </th>
+        <th>
+            <label class="col-md-2 control-label">Last&nbsp;Name</label>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            <label class="col-md-2 control-label">Phone&nbsp;Number</label>
+        </th>
+        <th>
+            <label class="col-md-2 control-label">Date&nbsp;Of&nbsp;Birth</label>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            <label class="col-md-2 control-label">Zip&nbsp;Code</label>
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            <label class="col-md-2 control-label">Created&nbsp;At</label>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Disable)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+
+   
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PhoneNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DateOfBirth)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Address)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ZipCode)
+    </td>
+    <td>
+        <img style="height:50px" class="img" src="~/Content/uploads/@item.Image" />
+    </td>
+    <td>
+        @*@Html.DisplayFor(modelItem => item.CreatedAt)*@
+        @String.Format("{0:d} at {0:t}", item.CreatedAt)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Disable)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info" })
+      
+       
+    </td>
+    <td>  @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-success" })</td>
+    
+</tr>
+}
+
+</table>

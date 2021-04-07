@@ -1,0 +1,79 @@
+﻿@model IEnumerable<FrozenFoods.Core.Models.Order>
+
+@{
+    ViewBag.Title = "CustomerOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Orders</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Date
+        </th>
+        <th>
+            Order Number
+
+        </th>
+        <th>
+            First Name
+        </th>
+        <th>
+            Last Name
+        </th>
+
+        <th>
+            Address
+        </th>
+        <th>
+          Zip Code
+        </th>
+
+        <th>
+            Order Status
+        </th>
+        <th>
+            Remark
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @String.Format("{0:d} at {0:t}", item.CreatedAt)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderNumber)
+
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SurName)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Address)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ZipCode)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderStatus)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Remark)
+    </td>
+    <td>
+        @Html.ActionLink("Order Details", "ViewOrder", "OrderManager", new { id = item.Id }, new { @class = "btn btn-info" })
+    </td>
+</tr>
+}
+
+</table>

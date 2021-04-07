@@ -1,0 +1,84 @@
+﻿@model FrozenFoods.Core.Models.Order
+
+@{
+    ViewBag.Title = "ViewOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View Order</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label class="col-md-2 control-label">Order&nbsp;Number</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderNumber)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">Created&nbsp;At</label>
+        </dt>
+
+        <dd>
+            @String.Format("{0:d} at {0:t}", Model.CreatedAt)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">First&nbsp;Name</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">Last&nbsp;Name</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SurName)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">Email</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">Address</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">Zip&nbsp;Code</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZipCode)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">Order&nbsp;Status</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderStatus)
+        </dd>
+
+    </dl>
+    @Html.Partial("OrderItems", Model.OrderItems)
+</div>
+<p>
+  
+    @Html.ActionLink("Back to List", "Index")
+</p>

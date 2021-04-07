@@ -1,0 +1,122 @@
+﻿@model FrozenFoods.Core.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label class="col-md-2 control-label">Created At</label>
+        </dt>
+
+        <dd>
+            @String.Format("{0:d} at {0:t}", Model.CreatedAt)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">User Id</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">First Name</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">Last Name</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">Email</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">Phone Number</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">Date Of Birth</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">Security Question</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecurityQuestion)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">Answer</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Answer)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">Address</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">Zip Code</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZipCode)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">Disable</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disable)
+        </dd>
+
+        <dt>
+            <label class="col-md-2 control-label">Image</label>
+        </dt>
+        
+        <dd>
+            <img style="height:50px" class="img" src="~/Content/uploads/@Model.Image" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-info" }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

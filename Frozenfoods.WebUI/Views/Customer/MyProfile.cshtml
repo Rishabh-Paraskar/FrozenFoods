@@ -1,0 +1,102 @@
+﻿@model FrozenFoods.Core.Models.Customer
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>My Profile</h2>
+
+<div style=" width: 1000px; position: absolute; right: 70px; top:250px" >
+
+    <hr />
+    <dl class="dl-horizontal" style="text-align:center; font-size:medium">
+        @if (@Model.Image == null)
+        {
+            <dd>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-md-12" style=" width:500px; position:absolute; right:270px; top:-150px">
+                    <img class="img-thumbnail" style="height:220px; width:250px; float:left" src="~/Content/uploads/profile.jpg">
+                </div>
+
+            </dd>
+        }
+        else
+        {
+            <dd>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-md-12"  style=" width:500px; position:absolute; right:270px; top:-150px">
+                    <img class="img-circle" style="height:180px; width:190px; float:left" src="~/Content/uploads/@Model.Image">
+                </div>
+
+            </dd>
+
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZipCode)
+        </dd>
+
+
+
+
+    </dl>
+
+</div>
+<div style=" height: 630px;"></div>
+<p class="dl-horizontal" style="text-align:center; font-size:medium">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.ActionLink("Update Profile", "UpdateProfileByUser", new { id = Model.Id }, new { @class = "btn btn-success" })
+    @*@Html.ActionLink("Back to List", "Index")*@
+</p>

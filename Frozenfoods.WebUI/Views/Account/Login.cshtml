@@ -1,0 +1,104 @@
+﻿@using FrozenFoods.Core.ViewModel
+@model LoginViewModel
+
+
+<h2>@ViewBag.Title</h2>
+@ViewBag.Message
+<link href="~/Content/Mybutton1.css" rel="stylesheet" />
+<div class="row" style=" height:650px">
+
+    <img src="~/Content/uploads/s-letter-logo-png-847.png" style="height:200px;width:300px;position:absolute; left:110px" />
+    <div style="width:100px;height:150px;">
+
+    </div>
+
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @*<h4>Use a local account to log in.</h4>*@
+               
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label class="col-md-2 control-label" style=" left:45px;bottom:-100px ">Email</label>
+                    <div class="col-md-10" style="bottom:-150px;left:-25px">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" style="bottom:-150px; left:70px">Password</label>
+
+                    <div class="col-md-10" style="bottom:-200px;left:-25px">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+
+                <table border="0">
+                    <tr>
+                        @*<td>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10" style="bottom:-200px">
+                                        &nbsp;&nbsp;
+                                        <a href='@Url.Action("Register", "Account")'>
+                                            <input type="button" value="Register" class="btn btn-default" />
+                                        </a>
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </td>*@
+
+                        <td>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10" style="bottom:-210px;left:90px">
+                                    <a href='@Url.Action("ForgotPassword", "Customer")'>
+                                        <input type="button" value="Forgot Password" class="button2" />
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10" style="bottom:-210px;left:90px">
+                                    <input type="submit" value="Log in" class="button2" />
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <link href="~/Content/LoginCSS.css" rel="stylesheet" />
+                <div class="banner" style="left:463px; top:-330px">
+                    <div class="banner-text">
+                        <h1>Olympic National Park</h1>
+                        <h1>India</h1>
+                    </div>
+
+                </div>
+
+
+
+
+                @* Enable this once you have account confirmation enabled for password reset functionality
+                    <p>
+                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                    </p>*@
+            }
+        </section>
+    </div>
+    @*<div class="col-md-4">
+            <section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+        </div>*@
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
